@@ -4,6 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!-- สำคัญมากสำหรับในการ Generate Swagag เอ้ย Swagger -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile> 
   </PropertyGroup>
 
   <ItemGroup>
