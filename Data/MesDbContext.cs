@@ -7,19 +7,19 @@ using REST_API_NET8.Models.SAP;
 
 namespace REST_API_NET8.Data
 {
-    public class FaceScanDbContext : DbContext
+    public class MesDbContext : DbContext
     {
         protected readonly IConfiguration _configuration;
-        public FaceScanDbContext(IConfiguration configuration, DbContextOptions<FaceScanDbContext> option) : base(option)
+        public MesDbContext(IConfiguration configuration, DbContextOptions<MesDbContext> option) : base(option)
         {
             _configuration = configuration;
         }
 
-        public DbSet<CooisDto> cooisDtos {get;set;}
+        public DbSet<MesForJoinSapDto> mesForJoinSapDtos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = _configuration.GetConnectionString("FaceScan");
+            var connectionString = _configuration.GetConnectionString("CosmoMes");
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseNpgsql(
@@ -32,7 +32,7 @@ namespace REST_API_NET8.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CooisDto>().HasNoKey();
+            modelBuilder.Entity<MesForJoinSapDto>().HasNoKey();
             base.OnModelCreating(modelBuilder);
         }
     }

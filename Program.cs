@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using REST_API_NET8.Data;
+using REST_API_NET8.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment;
@@ -30,6 +31,8 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSignalR();
 builder.Services.AddDbContext<FaceScanDbContext>();
+
+builder.Services.AddScoped<SapService>();
 
 var app = builder.Build();
 
